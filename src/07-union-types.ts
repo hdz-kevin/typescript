@@ -3,6 +3,7 @@
 
 // Template Literal Types
 type HeroId = `${string}-${string}-${string}-${string}-${string}`;
+type HeroPowerScale = "local" | "planetary" | "galactic" | "universal" | "multiversal" | number;
 
 type Hero = {
     // readonly: Indica que la propiedad no se puede modificar
@@ -10,6 +11,7 @@ type Hero = {
     name: string;
     age: number;
     isActive?: boolean;
+    powerScale?: HeroPowerScale;
 }
 
 const ironMan: Hero = {
@@ -32,5 +34,8 @@ const createHero = (name: string, age: number): Hero => {
 
 const thor = createHero("Thor", 1500);
 console.log(thor.id?.toString()); // Optional Chaining
+thor.powerScale = "galactic";
+console.log(thor);
 
 // thor.id = 23232 // Error: Cannot assign to 'id' because it is a read-only property.
+
